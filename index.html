@@ -4,400 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUDIKA - Muda-Mudi Dukuh Katik</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- 1. SETTINGAN DASAR & WARNA --- */
+        /* --- 1. SETUP TEMA AKSELERA (DARK MODE) --- */
         :root {
-            --primary-color: #0f2027; /* Dark Navy - Elegan */
-            --secondary-color: #203a43; /* Gradasi Biru Gelap */
-            --accent-color: #d4af37; /* Emas - Mewah */
-            --text-color: #333;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
+            --bg-color: #050505;       /* Hitam Pekat */
+            --grid-color: #1a1a1a;     /* Warna Garis Kotak */
+            --text-main: #ffffff;      /* Putih */
+            --text-muted: #888888;     /* Abu-abu */
+            --accent: #d4af37;         /* Emas MUDIKA */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif; /* Font mirip Akselera */
             scroll-behavior: smooth;
         }
 
         body {
-            line-height: 1.7;
-            color: var(--text-color);
-            background-color: var(--bg-light);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            /* Efek Grid Background seperti Akselera */
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px; /* Ukuran kotak */
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4 {
-            color: var(--primary-color);
+        /* --- 2. NAVBAR (TOMBOL ATAS) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.8); /* Transparan */
+            backdrop-filter: blur(10px);    /* Efek blur kaca */
+            z-index: 1000;
+            border-bottom: 1px solid #222;
         }
 
-        /* --- 2. HEADER DENGAN EFEK PARALLAX --- */
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-nav {
+            padding: 10px 25px;
+            background: var(--text-main);
+            color: var(--bg-color);
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- 3. HERO SECTION (Mirip Halaman Depan Akselera) --- */
         header {
-            /* Ganti URL foto di bawah ini dengan foto kegiatan/logo kamu nanti */
-            background-image: linear-gradient(rgba(15, 32, 39, 0.85), rgba(32, 58, 67, 0.8)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1600&auto=format&fit=crop');
-            
-            /* Kunci Efek Parallax */
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--white);
             padding: 20px;
+            position: relative;
+        }
+
+        /* Efek Glow di tengah */
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .badge {
+            background: #111;
+            border: 1px solid #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
         header h1 {
-            font-family: 'Playfair Display', serif; /* Font klasik untuk kesan mahal */
             font-size: 4rem;
-            margin-bottom: 10px;
-            color: var(--white);
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 900px;
         }
 
-        header h2 {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 30px;
+        /* Efek Text Gradient */
+        .gradient-text {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Efek Kursor Kedip (Typing) */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: var(--accent);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         header p {
-            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin-bottom: 40px;
-            font-size: 1.1rem;
-            opacity: 0.9;
         }
 
-        /* Tombol Keren */
-        .btn-wrapper {
+        .hero-buttons {
             display: flex;
             gap: 20px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
         .btn-primary {
-            background: var(--accent-color);
-            color: var(--primary-color);
+            background: var(--text-main);
+            color: black;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        .btn-primary:hover {
-            background: #b59021;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        .btn-secondary {
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: var(--text-main);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        .btn-outline {
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
+        .btn-primary:hover { background: var(--accent); }
+        .btn-secondary:hover { border-color: var(--text-main); }
 
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* --- 3. SECTION UMUM --- */
+        /* --- 4. SECTIONS (CONTENT) --- */
         section {
             padding: 100px 20px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
+            border-top: 1px solid #111;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h3 {
+        h3.section-title {
             font-size: 2.5rem;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 10px;
+            margin-bottom: 50px;
+            text-align: center;
         }
 
-        .section-header .divider {
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        /* --- 4. FILOSOFI & TENTANG KAMI --- */
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            color: #555;
-        }
-
-        .filosofi-box {
-            background: var(--white);
-            padding: 40px;
-            border-left: 5px solid var(--accent-color);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .filosofi-box h4 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        /* --- 5. STRUKTUR & VISI MISI --- */
-        .grid-3 {
+        .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .card {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 12px;
             transition: 0.3s;
-            border-top: 4px solid transparent;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-top: 4px solid var(--accent-color);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+            transform: translateY(-5px);
         }
 
-        .icon-box {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        /* Struktur List Styles */
-        .struktur-list {
-            list-style: none;
-        }
-        .struktur-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-        }
-        .struktur-list li strong {
-            color: var(--primary-color);
-        }
-
-        /* --- 6. FOOTER --- */
-        footer {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 60px 20px 20px;
-            text-align: center;
-        }
-
-        footer .social-icons {
-            margin-bottom: 30px;
-        }
-
-        footer .social-icons a {
-            color: var(--white);
+        .card h4 {
             font-size: 1.5rem;
-            margin: 0 15px;
-            transition: 0.3s;
+            margin-bottom: 15px;
+            color: var(--text-main);
         }
 
-        footer .social-icons a:hover {
-            color: var(--accent-color);
+        .card p, .card li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* --- RESPONSIVE MOBILE --- */
+        .card ul { padding-left: 20px; margin-top: 10px; }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            border-top: 1px solid #222;
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Hide section utility */
+        .hidden { display: none; }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
-            .about-container { grid-template-columns: 1fr; }
-            .btn-wrapper { flex-direction: column; width: 100%; }
-            .btn { width: 100%; text-align: center; }
+            .nav-links { display: none; } /* Hide menu on mobile for simplicity */
+            nav { justify-content: center; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="#" class="logo">MUDIKA<span style="color:var(--accent)">.</span></a>
+        <div class="nav-links">
+            <a href="#tentang">Tentang</a>
+            <a href="#visi">Visi Misi</a>
+            <a href="#kegiatan">Kegiatan</a>
+        </div>
+        <a href="#kontak" class="btn-nav">Hubungi Kami</a>
+    </nav>
+
     <header>
-        <h1>MUDIKA</h1>
-        <h2>Muda-Mudi Dukuh Katik, Kecemen</h2>
-        <p>"Wadah pemuda yang solid, kreatif, dan berintegritas untuk memajukan desa."</p>
+        <div class="badge"><i class="fas fa-star"></i> Organisasi Pemuda Terbaik</div>
+        <h1>
+            Muda-Mudi <br>
+            <span class="gradient-text">Dukuh Katik</span><span class="cursor"></span>
+        </h1>
+        <p>Wadah kolaborasi, kreativitas, dan pemberdayaan pemuda untuk menciptakan dampak nyata bagi masyarakat.</p>
         
-        <div class="btn-wrapper">
-            <a href="#filosofi" class="btn btn-primary">Tentang Kami</a>
-            <a href="#kontak" class="btn btn-outline">Hubungi Pengurus</a>
+        <div class="hero-buttons">
+            <a href="#visi" class="btn-primary">Lihat Visi Kami</a>
+            <a href="#tentang" class="btn-secondary">Filosofi</a>
         </div>
     </header>
 
-    <section id="filosofi">
-        <div class="section-header">
-            <h3>Siapa Kami?</h3>
-            <div class="divider"></div>
-        </div>
-        
-        <div class="about-container">
-            <div class="about-text">
-                <p><strong>MUDIKA</strong> hadir sebagai nafas baru bagi pergerakan pemuda di Dukuh Katik. Kami bukan sekadar perkumpulan, melainkan keluarga besar yang memiliki mimpi sama: menjadikan kampung halaman tempat yang nyaman, harmonis, dan maju.</p>
-                <br>
-                <p>Kegiatan kami mencakup segala aspek kehidupan bermasyarakat, mulai dari pelestarian budaya (adat/sinoman), kegiatan sosial keagamaan, hingga pengembangan ekonomi kreatif pemuda.</p>
+    <section id="tentang">
+        <h3 class="section-title">Siapa Kami?</h3>
+        <div class="grid-cards">
+            <div class="card">
+                <h4><i class="fas fa-users" style="color:var(--accent)"></i> MUDIKA</h4>
+                <p>Organisasi kepemudaan Dukuh Katik yang solid. Kami hadir untuk memajukan desa melalui kegiatan sosial, budaya, dan pendidikan.</p>
             </div>
-            
-            <div class="filosofi-box">
-                <h4>Filosofi Kami</h4>
-                <span class="quote">"Memayu Hayuning Bawana"</span>
-                <p>Sebuah semboyan luhur yang menjadi landasan gerak kami. Bermakna semangat untuk senantiasa <strong>memperindah dunia</strong>, menjaga keselamatan, dan menciptakan keharmonisan hidup antar sesama manusia maupun dengan alam semesta.</p>
-                <br>
-                <p><small><i class="fas fa-palette"></i> Warna Emas & Biru pada identitas kami melambangkan kejayaan, kebijaksanaan, dan kedalaman ilmu.</small></p>
+            <div class="card">
+                <h4><i class="fas fa-quote-right" style="color:var(--accent)"></i> Filosofi</h4>
+                <p><em>"Memayu Hayuning Bawana"</em></p>
+                <p>Semangat memperindah dunia, menjaga keselamatan, dan menciptakan keharmonisan hidup antar sesama.</p>
             </div>
         </div>
     </section>
 
-    <section style="background-color: var(--white);">
-        <div class="section-header">
-            <h3>Visi & Misi</h3>
-            <div class="divider"></div>
-        </div>
-
-        <div class="grid-3">
-            <div class="card" style="grid-column: span 1;">
-                <div class="icon-box"><i class="fas fa-eye"></i></div>
+    <section id="visi">
+        <h3 class="section-title">Arah Gerak</h3>
+        <div class="grid-cards">
+            <div class="card">
                 <h4>Visi Utama</h4>
-                <p>Menciptakan generasi muda yang kreatif, berdaya saing, dan berkontribusi aktif dalam membangun kehidupan sosial dan budaya di Dukuh Katik.</p>
+                <p>Menciptakan generasi muda yang kreatif, berdaya saing, dan berkontribusi aktif dalam membangun kehidupan sosial dan budaya.</p>
             </div>
-            <div class="card" style="grid-column: span 2;">
-                <div class="icon-box"><i class="fas fa-bullseye"></i></div>
-                <h4>Misi Kami</h4>
-                <ul style="padding-left: 20px; margin-top: 10px;">
-                    <li>Mengembangkan potensi pemuda melalui pelatihan, seni, dan olahraga.</li>
-                    <li>Mendorong solidaritas melalui kegiatan sosial dan budaya.</li>
-                    <li>Menjadi mitra pemerintah desa dalam meningkatkan kesejahteraan.</li>
-                    <li>Membina karakter pemuda yang bertanggung jawab dan berintegritas.</li>
+            <div class="card">
+                <h4>Misi Strategis</h4>
+                <ul>
+                    <li>Mengembangkan potensi seni & olahraga.</li>
+                    <li>Mendorong solidaritas sosial.</li>
+                    <li>Mitra strategis pemerintah desa.</li>
+                    <li>Membina karakter berintegritas.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="struktur">
-        <div class="section-header">
-            <h3>Struktur Pengurus 2025</h3>
-            <div class="divider"></div>
-            <p style="margin-top: 15px;">Orang-orang hebat di balik layar MUDIKA.</p>
-        </div>
-
-        <div class="grid-3">
+    " di akhir blok ini.
+    -->
+    <section id="kegiatan">
+        <h3 class="section-title">Program Unggulan</h3>
+        <div class="grid-cards">
             <div class="card">
-                <h4 style="margin-bottom: 20px; color: var(--accent-color);">Penasihat & Pelindung</h4>
-                <ul class="struktur-list">
-                    <li><span>Penasihat</span> <strong>Bp. Suseno (RW 01)</strong></li>
-                    <li><span>Penasihat</span> <strong>Bp. Subandi (RT 01)</strong></li>
-                    <li><span>Penasihat</span> <strong>Bp. Tutut (RT 02)</strong></li>
-                    <li><span>Penasihat</span> <strong>Bp. Teguh (RT 03)</strong></li>
-                    <li><span>Penasihat</span> <strong>Bp. Walijo (RT 04)</strong></li>
-                    <li><span>Penasihat</span> <strong>Bp. Walijo (RT 03)</strong></li>
-                    <li style="border-top: 2px dashed #eee; margin-top:10px; padding-top:10px;"><span>Pelindung</span> <strong>Bp. Rubiman</strong></li>
-                    <li><span>Pelindung</span> <strong>Bp. H. Joko Purnomo</strong></li>
-                </ul>
+                <h4><i class="fas fa-handshake"></i> Sinoman & Adat</h4>
+                <p>Pelayanan masyarakat dalam hajatan dan pelestarian budaya gotong royong.</p>
             </div>
-
             <div class="card">
-                <h4 style="margin-bottom: 20px; color: var(--accent-color);">Pengurus Harian</h4>
-                <ul class="struktur-list">
-                    <li><span>Ketua</span> <strong>Rokhim</strong></li>
-                    <li><span>Wakil Ketua</span> <strong>Dimas</strong></li>
-                    <li><span>Sekretaris 1</span> <strong>Yeni Wulan</strong></li>
-                    <li><span>Sekretaris 2</span> <strong>Nanda Amalia</strong></li>
-                    <li><span>Bendahara 1</span> <strong>Ella</strong></li>
-                    <li><span>Bendahara 2</span> <strong>Kingkin</strong></li>
-                </ul>
+                <h4><i class="fas fa-moon"></i> Halal Bi Halal</h4>
+                <p>Event tahunan terbesar untuk mempererat silaturahmi seluruh warga desa.</p>
             </div>
-
             <div class="card">
-                <h4 style="margin-bottom: 20px; color: var(--accent-color);">Koordinator Bidang</h4>
-                <ul class="struktur-list">
-                    <li><span>Seksi Rohani</span> <strong>Tri Yulianto, Ahnan</strong></li>
-                    <li><span>Seksi Perlengkapan</span> <strong>Kurniawan, Londo, Fadil</strong></li>
-                    <li><span>Seksi Penerangan</span> <strong>Alex, Bambang</strong></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-color: var(--primary-color); color: white;">
-        <div class="section-header">
-            <h3 style="color: white;">Agenda Kegiatan</h3>
-            <div class="divider"></div>
-        </div>
-
-        <div class="grid-3">
-            <div class="card" style="background: rgba(255,255,255,0.1); color: white; border: none;">
-                <h4 style="color: var(--accent-color);">Sinoman & Adat</h4>
-                <p>Gotong royong membantu hajatan warga (Kumbakarnan, resepsi) sebagai wujud pengabdian masyarakat.</p>
-            </div>
-            <div class="card" style="background: rgba(255,255,255,0.1); color: white; border: none;">
-                <h4 style="color: var(--accent-color);">PHBI & Halal Bi Halal</h4>
-                <p>Mempererat ukhuwah melalui kegiatan keagamaan dan silaturahmi akbar tahunan.</p>
-            </div>
-            <div class="card" style="background: rgba(255,255,255,0.1); color: white; border: none;">
-                <h4 style="color: var(--accent-color);">HUT RI & Refleksi</h4>
-                <p>Memeriahkan kemerdekaan dengan lomba rakyat dan renungan malam akhir tahun.</p>
+                <h4><i class="fas fa-flag"></i> HUT RI</h4>
+                <p>Pesta rakyat dan lomba untuk memeriahkan kemerdekaan Indonesia.</p>
             </div>
         </div>
     </section>
 
     <footer id="kontak">
-        <h2 style="color: var(--white); font-family: 'Playfair Display', serif;">MUDIKA</h2>
-        <p style="opacity: 0.7;">Muda-Mudi Dukuh Katik, Desa Kecemen</p>
-        
-        <div style="margin: 30px 0;">
-            <p><strong>Alamat Sekretariat:</strong><br>
-            Dukuh Katik, Desa Kecemen, Kec. Manisrenggo, Kab. Klaten</p>
-        </div>
-
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
-
-        <p style="font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            &copy; 2025 MUDIKA Official Website. All Rights Reserved.
+        <h2 style="color: var(--text-main); margin-bottom: 20px;">MUDIKA KATIK</h2>
+        <p>Dukuh Katik, Desa Kecemen, Manisrenggo, Klaten</p>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">
+            &copy; 2025 MUDIKA. Design Inspired by Akselera.
         </p>
     </footer>
 
