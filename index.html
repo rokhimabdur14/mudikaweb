@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUDIKA - Muda-Mudi Dukuh Katik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dasar agar tampilan rapi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            /* Background gradien gelap supaya tulisan terbaca jelas */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #ffd700; /* Warna emas */
+        }
+
+        header p {
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        /* --- Section Umum --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h3.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        h3.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e74c3c;
+            margin: 15px auto 0;
+        }
+
+        /* --- Tentang Kami --- */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Visi Misi --- */
+        .visi-misi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card ul {
+            list-style-position: inside;
+            margin-top: 10px;
+        }
+
+        /* --- Struktur Organisasi --- */
+        .struktur-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .role-group {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .role-group:last-child {
+            border-bottom: none;
+        }
+
+        .role-title {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 1.1rem;
+        }
+
+        /* --- Program Kerja --- */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .program-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsif untuk HP --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .visi-misi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MUDIKA</h1>
+        <h2>Muda-Mudi Dukuh Katik</h2>
+        <p>"Memayu Hayuning Bawana"</p>
+        <p>Wadah semangat kebersamaan dan pemberdayaan pemuda Desa Kecemen.</p>
+        <a href="#kontak" class="btn">Hubungi Kami</a>
+    </header>
+
+    <section id="tentang">
+        <h3 class="section-title">Tentang Kami</h3>
+        <div class="about-content">
+            <p><strong>MUDIKA</strong> adalah organisasi kepemudaan yang didirikan untuk mewadahi semangat kebersamaan di Dukuh Katik, Desa Kecemen. Berawal dari inisiatif untuk memajukan komunitas desa melalui kegiatan sosial, budaya, dan pendidikan.</p>
+            <br>
+            <p>Kami memegang teguh filosofi <em>"Memayu Hayuning Bawana"</em>, yang mencerminkan semangat gotong royong, optimisme, dan tanggung jawab untuk menjaga keharmonisan lingkungan dan masyarakat.</p>
+        </div>
+    </section>
+
+    <section id="visi-misi">
+        <div class="visi-misi-grid">
+            <div class="card">
+                <h4 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.5rem;">Visi</h4>
+                <p>Menciptakan generasi muda yang kreatif, berdaya saing, dan berkontribusi aktif dalam membangun kehidupan sosial dan budaya di Dukuh Katik.</p>
+            </div>
+            <div class="card">
+                <h4 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.5rem;">Misi</h4>
+                <ul>
+                    <li>Mengembangkan potensi pemuda melalui pelatihan, seni, dan olahraga.</li>
+                    <li>Mendorong solidaritas melalui kegiatan sosial dan budaya.</li>
+                    <li>Menjadi mitra pemerintah desa dalam meningkatkan kesejahteraan.</li>
+                    <li>Membina karakter pemuda yang bertanggung jawab dan berintegritas.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="struktur">
+        <h3 class="section-title">Struktur Pengurus 2025</h3>
+        <div class="struktur-box">
+            <div class="role-group">
+                <div class="role-title">Penasihat</div>
+                <div>Bp. Suseno, Bp. Subandi, Bp. Tutut, Bp. Teguh, Bp. Walijo, Bp. Walijo (RT 03)</div>
+            </div>
+            
+            <div class="role-group">
+                <div class="role-title">Pelindung</div>
+                <div>Bp. Rubiman, Bp. H. Joko Susilo, Bp. Joko Purnomo</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Ketua & Wakil</div>
+                <div>Rokhim & Dimas</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Sekretaris</div>
+                <div>Yeni Wulan, Nanda Amalia</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Bendahara</div>
+                <div>Ella, Kingkin</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Seksi Rohani</div>
+                <div>Tri Yulianto, Ahnan Ilham</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Seksi Perlengkapan</div>
+                <div>Kurniawan, Tri Purwanto, Fadil, Nanang</div>
+            </div>
+            <div class="role-group">
+                <div class="role-title">Seksi Penerangan</div>
+                <div>Alex, Bambang</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program">
+        <h3 class="section-title">Kegiatan Unggulan</h3>
+        <div class="program-grid">
+            <div class="program-card">
+                <div class="program-icon">🤝</div>
+                <div class="program-title">Sinoman & Adat</div>
+                <p>Membantu kelancaran acara pernikahan warga (kumbakarnan, penataan tempat) sebagai wujud gotong royong.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🌙</div>
+                <div class="program-title">Halal Bi Halal</div>
+                <p>Pengajian dan ramah tamah tahunan untuk mempererat silaturahmi warga setelah Idul Fitri.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🇮🇩</div>
+                <div class="program-title">Peringatan HUT RI</div>
+                <p>Mengadakan lomba rakyat dan malam tirakatan untuk memeriahkan kemerdekaan.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">💡</div>
+                <div class="program-title">Refleksi Akhir Tahun</div>
+                <p>Doa bersama dan renungan menyambut tahun baru dengan semangat positif.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <h3 style="margin-bottom: 20px;">Sekretariat MUDIKA</h3>
+        <p><strong>Alamat:</strong> Dukuh Katik, Desa Kecemen</p>
+        <p>Kecamatan Manisrenggo, Kabupaten Klaten</p>
+        <br>
+        <p><em>Menerima informasi sinoman minimal 3 minggu sebelum acara.</em></p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2025 MUDIKA - Memayu Hayuning Bawana</p>
+    </footer>
+
+</body>
+</html>
